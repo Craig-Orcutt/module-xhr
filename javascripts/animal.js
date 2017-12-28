@@ -1,23 +1,20 @@
 'use strict';
 let carnivores = [];
 let herbivore = [];
+let loadUp = new XMLHttpRequest();
 
-let loadCarnivores = (callbackToInvoke) => {
-    const loader = new XMLHttpRequest();
-  
-    loader.addEventListener("load", function() {
-      // Set the value of the private array
-      carnivores = JSON.parse(this.responseText);
-  
-      // Now exeute the callback function (`callbackToInvoke`) so that the caller knows that the process is complete. Make sure to pass the carnivore array as an argument.
-    });
-  };
-
-  loadCarnivores("GET", carnivores.JSON);
-  console.log(carnivores);
-module.exports.getjsonData =() => {
-    const msgReq = new XMLHttpRequest();
-    msgReq.open("GET", "carnivores.json");
-    console.log(carnivores);
-    
+let xHRFail =() =>{
+  console.log('An error occured while transferring the data');
 };
+
+let fileLoad = ()=>{
+  // console.log('event.target',event.target);
+  var data = JSON.parse(event.target.responseText);
+  console.log('data',data);
+};
+loadUp.addEventListener('load', fileLoad);
+loadUp.addEventListener('error', xHRFail);
+
+loadUp.open("GET", 'carnivores.json');
+loadUp.send();
+

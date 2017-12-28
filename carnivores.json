@@ -1,1 +1,19 @@
-["Shark", "Alligator", "Tiger", "Coyote", "Lion"]
+{
+    "carnivores" : [
+        {
+            "species": "Shark"
+        },
+        {
+            "species": "Alligator"
+        },
+        {
+            "species": "Tiger"
+        },
+        {
+            "species": "Bear"
+        },
+        {
+            "species": "Lion"
+        }
+    ]
+}
