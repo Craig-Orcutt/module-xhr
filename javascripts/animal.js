@@ -1,6 +1,5 @@
 
 'use strict';
-let carnivoreDiv = document.getElementById('carnivore');
 let carnivores = [];
 let herbivores = [];
 
@@ -17,5 +16,17 @@ let loadCarnivores = function(callbackToInvoke) {
   xhr.send();
 
 };
+let loadHerbivores = function(callbackToInvoke) {
+  const xhr = new XMLHttpRequest();
+  xhr.addEventListener("load", function() { 
+    // Set the value of the private array
+    herbivores = JSON.parse(this.responseText);
+    callbackToInvoke(herbivores);
+  });
+  xhr.open("GET", "herbivores.json");
+  xhr.send();
 
-module.exports = { loadCarnivores };
+};
+
+
+module.exports = { loadCarnivores , loadHerbivores };
