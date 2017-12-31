@@ -1,1 +1,20 @@
-["Cow", "Elephant", "Manatee", "Goat", "Doge"]
+
+{
+    "herbivores" : [
+        {
+            "species": "Cow"
+        },
+        {
+            "species": "Elephant"
+        },
+        {
+            "species": "Manatee"
+        },
+        {
+            "species": "Goat"
+        },
+        {
+            "species": "Doge"
+        }
+    ]
+}
