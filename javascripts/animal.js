@@ -1,33 +1,21 @@
+
 'use strict';
+let carnivoreDiv = document.getElementById('carnivore');
 let carnivores = [];
-let herbivore = [];
+let herbivores = [];
 
-function fileLoadCarnivore (callbackToInvoke) {
-  let carnivoreCall = new XMLHttpRequest();
-  carnivoreCall.addEventListener('load', function(){
-  carnivores = JSON.parse(event.target.responseText);
-  console.log(carnivores);
-  // carnivores = carnivores.species;
-});
-carnivoreCall.open('GET', "carnivores.json");
-carnivoreCall.send();
-  
-}
-console.log(carnivores);
-// let fileLoadHerbivore = ()=>{
-//   let requestHerbivore = new XMLHttpRequest();
-//   var herbivoreData = JSON.parse(event.target.responseText);
-//   console.log('data1', herbivoreData);
+// function to call carnivore json and assign it to carnivore Array
 
+let loadCarnivores = function(callbackToInvoke) {
+  const xhr = new XMLHttpRequest();
+  xhr.addEventListener("load", function() {
+    // Set the value of the private array
+    carnivores = JSON.parse(this.responseText);
+    callbackToInvoke(carnivores);
+  });
+  xhr.open("GET", "carnivores.json");
+  xhr.send();
 
-// loadUpCarnivore.addEventListener('load', fileLoadCarnivore);
-// loadUpCarnivore.addEventListener('error', xHRFail);
-// // loadUpHerbivore.addEventListener('load', fileLoadHerbivore);
-// // loadUpHerbivore.addEventListener('error', fileLoadHerbivore);
+};
 
-// loadUpCarnivore.open("GET", 'carnivores.json');
-// loadUpCarnivore.send();
-// loadUpHerbivore.open("GET", 'herbivores.json');
-// loadUpHerbivore.send();
-
-
+module.exports = { loadCarnivores };
